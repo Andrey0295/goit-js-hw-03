@@ -1,23 +1,41 @@
-function mapArray(array) {
-  'use strict';
-  const numbers = new Array(array.length);
-  for (let i = 0; i < array.length; i += 1) {
-    // Write code under this line
-    //
-    numbers[i] = array[i] * 10;
-    // numbers = array[i].push * 10;
-  }
-  return numbers;
-}
-console.log(mapArray([1, 2]));
-console.log(mapArray([-2, 0, 2]));
-// [-20, 0, 20]
+// Суммирование значений свойства из массива объектов
 
-//console.log(mapArray([-2.5, 0, 2.5]));
-// [-25, 0, 25]
-const array = [];
-console.log(array);
-let newArray = array.concat(1, 2, 3);
-console.log(newArray[1] * 10);
-let example = newArray[2] * 10;
-console.log(example);
+// Напиши функцию calculateTotalPrice(allProdcuts, productName),
+//   которая получает массив объектов и имя продукта(значение свойства name).
+// Возвращает общую стоимость продукта(цена умноженная на количество).
+
+function calculateTotalPrice(array, prop) {
+  'use strict';
+  // Write code under this line
+  let totalPrice = 0;
+  for (const key of array) {
+    if (key.name === prop) {
+      totalPrice += key.price * key.quantity;
+    }
+  }
+
+  return totalPrice;
+}
+
+// Объекты и ожидаемый результат
+const products = [
+  { name: 'Радар', price: 1300, quantity: 4 },
+  { name: 'Радар', price: 1280, quantity: 2 },
+  { name: 'Радар', price: 1320, quantity: 1 },
+  { name: 'Сканер', price: 2700, quantity: 1 },
+  { name: 'Сканер', price: 2500, quantity: 3 },
+  { name: 'Дроид', price: 400, quantity: 7 },
+  { name: 'Захват', price: 1200, quantity: 2 },
+];
+
+console.log(calculateTotalPrice(products, 'Радар'));
+// 9080
+
+console.log(calculateTotalPrice(products, 'Сканер'));
+// 10200
+
+console.log(calculateTotalPrice(products, 'Захват'));
+// 2400
+
+console.log(calculateTotalPrice(products, 'Дроид'));
+// 2800
